@@ -16,6 +16,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1Zq6pwzq6cuZS1PWuBZB0YXcVlM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -41,7 +42,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585554463202</updated>
       <workItem from="1585554469109" duration="756000" />
-      <workItem from="1585572395416" duration="922000" />
+      <workItem from="1585572395416" duration="1078000" />
     </task>
     <servers />
   </component>
@@ -53,9 +54,13 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="941" y="137" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1585573318980" />
-    <state x="1139" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1585572398662">
+    <state x="1139" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1585573539369">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1139" y="350" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585572398662" />
+    <state x="1139" y="350" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585573539369" />
+    <state x="1243" y="441" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585573554384">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1243" y="441" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050@0.0.1920.1050" timestamp="1585573554384" />
   </component>
 </project>
