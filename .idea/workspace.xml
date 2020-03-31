@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4bc698f-2937-4b3c-946d-70c312d145c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DBaccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +29,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.19.zip!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="SvnConfiguration">
@@ -53,10 +57,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="941" y="137" key="SettingsEditor" timestamp="1585573318980">
+    <state x="1154" y="278" key="DetectedRootsChooserDialog" timestamp="1585680670246">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="941" y="137" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1585573318980" />
+    <state x="1154" y="278" key="DetectedRootsChooserDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585680670246" />
+    <state x="1110" y="304" key="FileChooserDialogImpl" timestamp="1585680661857">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1110" y="304" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1585680661857" />
+    <state x="880" y="137" key="SettingsEditor" timestamp="1585680676698">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="880" y="137" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1585680676698" />
     <state x="1139" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1585573539369">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

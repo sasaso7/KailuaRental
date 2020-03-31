@@ -19,7 +19,7 @@ public class DBaccess {
             con = DriverManager.getConnection(DATABASE_URL, "root", "1234");
             s = con.createStatement();
 
-            ResultSet rs = s.executeQuery("Put sql kode ind her")
+            ResultSet rs = s.executeQuery("SELECT vendor_name");
             if (rs != null)
                 while (rs.next()) {
                     System.out.printf("Data from name: %-34s ",rs.getString("vendor_name"));
