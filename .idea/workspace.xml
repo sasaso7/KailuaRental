@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4bc698f-2937-4b3c-946d-70c312d145c9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_19.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/java.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KailuaRental.iml" beforeDir="false" afterPath="$PROJECT_DIR$/KailuaRental.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DBaccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBaccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +37,25 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.19.zip!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.19.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="KailuaRental" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -57,18 +76,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="828" y="226" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585680905532">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="828" y="226" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585680905532" />
     <state x="1154" y="278" key="DetectedRootsChooserDialog" timestamp="1585680670246">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1154" y="278" key="DetectedRootsChooserDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585680670246" />
-    <state x="1110" y="304" key="FileChooserDialogImpl" timestamp="1585680661857">
+    <state x="1110" y="304" key="FileChooserDialogImpl" timestamp="1585681467610">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1110" y="304" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1585680661857" />
-    <state x="880" y="137" key="SettingsEditor" timestamp="1585680676698">
+    <state x="1110" y="304" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1585681467610" />
+    <state width="962" height="280" key="GridCell.Tab.0.bottom" timestamp="1585681512866">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="880" y="137" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1585680676698" />
+    <state width="962" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1585681512866" />
+    <state width="962" height="280" key="GridCell.Tab.0.center" timestamp="1585681512866">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="962" height="280" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1585681512866" />
+    <state width="962" height="280" key="GridCell.Tab.0.left" timestamp="1585681512866">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="962" height="280" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1585681512866" />
+    <state width="962" height="280" key="GridCell.Tab.0.right" timestamp="1585681512866">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="962" height="280" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1585681512866" />
+    <state x="880" y="137" key="SettingsEditor" timestamp="1585681475761">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="880" y="137" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1585681475761" />
     <state x="1139" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1585573539369">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

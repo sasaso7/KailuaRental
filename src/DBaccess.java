@@ -10,7 +10,7 @@ public class DBaccess {
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/ap";
     static Connection con;
 
-    public DBaccess(){
+    public static void getDB(){
         try {
             con = null;
             Statement s = null;
