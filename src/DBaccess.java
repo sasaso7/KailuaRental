@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class DBaccess {
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DATABASE_URL = "jdbc:mysql://localhost:3306/ap";
+    static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
 
     public static void getDB(){
@@ -19,11 +19,11 @@ public class DBaccess {
             con = DriverManager.getConnection(DATABASE_URL, "root", "1234");
             s = con.createStatement();
 
-            ResultSet rs = s.executeQuery("SELECT vendor_name,  vendor_city  from vendors");
+            ResultSet rs = s.executeQuery("SELECT renter_name,  renter_city  from renters");
             if (rs != null)
                 while (rs.next()) {
-                    System.out.printf("Data from name: %-34s ",rs.getString("vendor_name"));
-                    System.out.printf("%s\n ",rs.getString("vendor_city"));
+                    System.out.printf("Data from name: %-34s ",rs.getString("renter_name"));
+                    System.out.printf("%s\n ",rs.getString("renter_city"));
                 }
             s.close();
             con.close();
