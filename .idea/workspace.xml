@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4bc698f-2937-4b3c-946d-70c312d145c9" name="Default Changelist" comment="" />
+    <list default="true" id="f4bc698f-2937-4b3c-946d-70c312d145c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CarProject/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CarProject/CarMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CarProject/FileHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CarProject/Luxury.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Luxury.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +41,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -73,6 +84,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="828" y="226" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585680905532" />
+    <state x="1163" y="457" width="389" height="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585814868646">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1163" y="457" width="389" height="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1050@0.0.1920.1050" timestamp="1585814868646" />
     <state x="1154" y="278" key="DetectedRootsChooserDialog" timestamp="1585680670246">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
