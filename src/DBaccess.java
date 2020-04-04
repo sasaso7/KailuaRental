@@ -106,31 +106,41 @@ public class DBaccess {
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
 
-            String query = " insert into users (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_license_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query =  "insert into users (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_license_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
             //Her bestemmes renterID
+
             int RenterIDCounter = renters.size();
                     int renterID = RenterIDCounter+1;
             System.out.println("Please enter your first name");
-                    preparedStmt.setString (1, "in.nextLine");
+                    String a = in.nextLine();
+                    preparedStmt.setString (1, a);
             System.out.println("Please enter your last name");
-                    preparedStmt.setString (2, "in.nextLine");
+                    String b = in.nextLine();
+                    preparedStmt.setString (2, b);
             System.out.println("Please enter your phone");
-                    preparedStmt.setString (3, "in.nextLine");
+                    String c = in.nextLine();
+                    preparedStmt.setString (3, c);
             System.out.println("Please enter your E-mail");
-                    preparedStmt.setString (4, "in.nextLine");
+                    String d = in.nextLine();
+                    preparedStmt.setString (4, d);
             System.out.println("Please enter your address");
-                    preparedStmt.setString (5, "in.nextLine");
+                    String e = in.nextLine();
+                    preparedStmt.setString (5, e);
             System.out.println("Please enter your city");
-                    preparedStmt.setString (6, "in.nextLine");
+                    String f = in.nextLine();
+                    preparedStmt.setString (6, f);
             System.out.println("Please enter your zip");
-                    preparedStmt.setString (7, "in.nextLine");
+                    String g = in.nextLine();
+                    preparedStmt.setString (7, g);
             System.out.println("Please enter your driver licence number");
-                    preparedStmt.setString (8, "in.nextLine");
+                    String h = in.nextLine();
+                    preparedStmt.setString (8, h);
             System.out.println("Please enter when your driver licence got registered in YYYY-MM-DD");
-                    preparedStmt.setString (9, "in.nextLine");
+                    String i = in.nextLine();
+                    preparedStmt.setString (9, i);
 
             // execute the preparedstatement
             preparedStmt.execute();
