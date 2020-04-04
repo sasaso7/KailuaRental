@@ -33,7 +33,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.19.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -71,7 +71,7 @@
       <workItem from="1585554469109" duration="756000" />
       <workItem from="1585572395416" duration="1078000" />
       <workItem from="1585897488104" duration="3842000" />
-      <workItem from="1585987969871" duration="3637000" />
+      <workItem from="1585987969871" duration="4965000" />
     </task>
     <servers />
   </component>
@@ -99,38 +99,40 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1154" y="278" key="DetectedRootsChooserDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585680670246" />
-    <state x="1110" y="304" key="FileChooserDialogImpl" timestamp="1585681467610">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="1137" y="313" key="FileChooserDialogImpl" timestamp="1585992626742">
+      <screen x="65" y="0" width="1855" height="1080" />
     </state>
     <state x="1110" y="304" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1585681467610" />
-    <state width="1162" height="265" key="GridCell.Tab.0.bottom" timestamp="1585992221899">
+    <state x="1137" y="313" key="FileChooserDialogImpl/65.0.1855.1080@65.0.1855.1080" timestamp="1585992626742" />
+    <state width="1162" height="265" key="GridCell.Tab.0.bottom" timestamp="1585992634325">
       <screen x="65" y="0" width="1855" height="1080" />
     </state>
     <state width="1091" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1585901536780" />
-    <state width="1162" height="265" key="GridCell.Tab.0.bottom/65.0.1855.1080@65.0.1855.1080" timestamp="1585992221899" />
-    <state width="1162" height="265" key="GridCell.Tab.0.center" timestamp="1585992221899">
+    <state width="1162" height="265" key="GridCell.Tab.0.bottom/65.0.1855.1080@65.0.1855.1080" timestamp="1585992634325" />
+    <state width="1162" height="265" key="GridCell.Tab.0.center" timestamp="1585992634325">
       <screen x="65" y="0" width="1855" height="1080" />
     </state>
     <state width="1091" height="280" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1585901536780" />
-    <state width="1162" height="265" key="GridCell.Tab.0.center/65.0.1855.1080@65.0.1855.1080" timestamp="1585992221899" />
-    <state width="1162" height="265" key="GridCell.Tab.0.left" timestamp="1585992221899">
+    <state width="1162" height="265" key="GridCell.Tab.0.center/65.0.1855.1080@65.0.1855.1080" timestamp="1585992634325" />
+    <state width="1162" height="265" key="GridCell.Tab.0.left" timestamp="1585992634325">
       <screen x="65" y="0" width="1855" height="1080" />
     </state>
     <state width="1091" height="280" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1585901536780" />
-    <state width="1162" height="265" key="GridCell.Tab.0.left/65.0.1855.1080@65.0.1855.1080" timestamp="1585992221899" />
-    <state width="1162" height="265" key="GridCell.Tab.0.right" timestamp="1585992221899">
+    <state width="1162" height="265" key="GridCell.Tab.0.left/65.0.1855.1080@65.0.1855.1080" timestamp="1585992634325" />
+    <state width="1162" height="265" key="GridCell.Tab.0.right" timestamp="1585992634325">
       <screen x="65" y="0" width="1855" height="1080" />
     </state>
     <state width="1091" height="280" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1585901536780" />
-    <state width="1162" height="265" key="GridCell.Tab.0.right/65.0.1855.1080@65.0.1855.1080" timestamp="1585992221899" />
+    <state width="1162" height="265" key="GridCell.Tab.0.right/65.0.1855.1080@65.0.1855.1080" timestamp="1585992634325" />
     <state x="1204" y="244" key="RollbackChangesDialog" timestamp="1585901099415">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1204" y="244" key="RollbackChangesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1585901099415" />
-    <state x="621" y="93" key="SettingsEditor" timestamp="1585903558409">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="665" y="96" key="SettingsEditor" timestamp="1585992628524">
+      <screen x="65" y="0" width="1855" height="1080" />
     </state>
     <state x="621" y="93" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1585903558409" />
+    <state x="665" y="96" key="SettingsEditor/65.0.1855.1080@65.0.1855.1080" timestamp="1585992628524" />
     <state x="1165" y="360" key="com.intellij.ide.util.TipDialog" timestamp="1585988311726">
       <screen x="65" y="0" width="1855" height="1080" />
     </state>
