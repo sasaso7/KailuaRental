@@ -5,14 +5,17 @@ public class Car {
     private String regNumber;
     private String regYear;
     private String odometer;
+    private CarType carType;
 
-    public Car(String brand, String model, String fuel, String regNumber, String regYear, String odometer) {
+    public Car(String brand, String model, String fuel, String regNumber, String regYear, String odometer, CarType carType) {
         this.brand = brand;
         this.model = model;
         this.fuel = fuel;
         this.regNumber = regNumber;
         this.regYear = regYear;
         this.odometer = odometer;
+        this.carType = carType;
+
     }
 
     //Getters

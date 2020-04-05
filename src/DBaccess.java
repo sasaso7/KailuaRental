@@ -111,7 +111,6 @@ public class DBaccess {
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
             //Her bestemmes renterID
-
             int RenterIDCounter = renters.size();
                     int renterID = RenterIDCounter+1;
             System.out.println("Please enter your first name");
@@ -145,6 +144,53 @@ public class DBaccess {
             // execute the preparedstatement
             preparedStmt.execute();
 
+            con.close();
+
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch (ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
+
+
+    public static void getCarType(ArrayList<CarType> carTypes){
+        try {
+            con = null;
+            Statement s = null;
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", "ElfenbenNisse19");
+            s = con.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT cartype_id, cartype_description, cartype_gear, cartype_motorpower, cartype_cruisecontrol, cartype_aircon, cartype_seats FROM cartype");
+            if (rs != null)
+                //Dette er et while loop, for at køre igennem database tabellen og tilføje data til at arrayliste
+                //som kan bruges i java
+                while (rs.next()) {
+                    int cartypeID = rs.getInt("cartype_id");
+                    String cartypeDescription = rs.getString("cartype_description");
+                    String gear = rs.getString("cartype_gear");
+                    String motorpower = rs.getString("cartype_motorpower");
+                    String cruisecontrol = rs.getString("cartype_cruisecontrol");
+                    String aircon = rs.getString("cartype_aircon");
+                    String seats = rs.getString("cartype_seats");
+                    //nu laves objektet
+                    CarType addman = new CarType(cartypeID, cartypeDescription, gear, motorpower, cruisecontrol, aircon, seats);
+                    //objektet tilføjes på vores arrayliste
+                    carTypes.add(addman);
+
+                }
+            s.close();
             con.close();
 
         }
