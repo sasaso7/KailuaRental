@@ -7,8 +7,7 @@ public class CarMenu {
         boolean isRunning = true;
 
         //Creates Arrays, Reads files, Creates objects, fills Array
-        ArrayList<Luxury> luxuryArray = new ArrayList<>();
-        FileHandler.luxuryReadFromFile(luxuryArray);
+
 
         do{
             System.out.println("1. For at printe liste ud");
@@ -17,10 +16,10 @@ public class CarMenu {
 
             switch(menuChoice){
                 case 1:
-                    printList(luxuryArray);
+                 //   printList(luxuryArray);
                     break;
                 case 2:
-                    Luxury.createLuxury(luxuryArray);
+                   // Luxury.createLuxury(luxuryArray);
                     break;
                 case 3:
                     isRunning = false;

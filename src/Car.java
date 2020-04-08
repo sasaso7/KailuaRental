@@ -1,21 +1,20 @@
 public class Car {
+    private int carId;
     private String brand;
-    private String model;
     private String fuel;
     private String regNumber;
     private String regYear;
     private String odometer;
-    private CarType carType;
+    private int carType;
 
-    public Car(String brand, String model, String fuel, String regNumber, String regYear, String odometer, CarType carType) {
+    public Car(int carId, String brand, String fuel, String regNumber, String regYear, String odometer, int carType) {
+        this.carId = carId;
         this.brand = brand;
-        this.model = model;
         this.fuel = fuel;
         this.regNumber = regNumber;
         this.regYear = regYear;
         this.odometer = odometer;
         this.carType = carType;
-
     }
 
     //Getters
@@ -23,9 +22,6 @@ public class Car {
         return brand;
     }
 
-    public String getModel() {
-        return model;
-    }
 
     public String getFuel() {
         return fuel;
@@ -48,9 +44,6 @@ public class Car {
         this.brand = brand;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
 
     public void setFuel(String fuel) {
         this.fuel = fuel;
