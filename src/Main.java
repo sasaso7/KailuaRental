@@ -6,7 +6,7 @@ public class Main {
         ArrayList<CarType> carTypes = new ArrayList();
         DBaccess.getCarType(carTypes);
         ArrayList<Car> cars = new ArrayList();
-        DBaccess.getCars(cars);
+        DBaccess.getCars(cars, carTypes);
         DBaccess.insertCar(cars, carTypes);
         System.out.println(cars);
         System.out.println(carTypes);

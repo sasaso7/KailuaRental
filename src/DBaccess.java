@@ -202,13 +202,11 @@ public class DBaccess {
             preparedStmt.setInt(7, typeId);
 
             // execute the preparedstatement
-            Car obj = new Car(carId, a, b, c, d, e, typeId);
-            cars.add(obj);
 
             String query2 = "insert into cartype (cartype_description, cartype_gear, cartype_motorpower, cartype_cruisecontrol, cartype_aircon, cartype_seats)" + " values (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt2 = con.prepareStatement(query2);
 
-            System.out.printf("Type 1 for Luxury %nType 2 for sport %nType 3 for family");
+            System.out.printf("Type 1 for Luxury %nType 2 for sport %nType 3 for family%n");
             int choice = in.nextInt();
             in.nextLine();
             switch(choice){
@@ -225,6 +223,9 @@ public class DBaccess {
                     CarType typeObj = new CarType(carTypes.size()+1, "Luxury", "Auto", aa, "True", "True", "Leather");
                     carTypes.add(typeObj);
                     preparedStmt.execute();
+                    Car obj = new Car(carId, a, b, c, d, e, typeObj);
+                    cars.add(obj);
+
                     break;
                 case 2:
                     preparedStmt2.setString(1,"Sport");
@@ -242,6 +243,8 @@ public class DBaccess {
                     CarType typeObj2 = new CarType(carTypes.size()+1, "Sport", "Manual", ab, "False", "False", ac);
                     carTypes.add(typeObj2);
                     preparedStmt.execute();
+                    Car obj2 = new Car(carId, a, b, c, d, e, typeObj2);
+                    cars.add(obj2);
                     break;
                 case 3:
                     preparedStmt2.setString(1,"Family");
@@ -267,6 +270,8 @@ public class DBaccess {
                     CarType typeObj3 = new CarType(carTypes.size()+1, "Family", "Manual", ad, cruiseControl, "False", ae);
                     carTypes.add(typeObj3);
                     preparedStmt.execute();
+                    Car obj3 = new Car(carId, a, b, c, d, e, typeObj3);
+                    cars.add(obj3);
                     break;
             }
 
@@ -288,7 +293,7 @@ public class DBaccess {
         }
     }
 
-    public static void getCars(ArrayList<Car> car){
+    public static void getCars(ArrayList<Car> car, ArrayList<CarType> carTypes){
         try {
             con = null;
             Statement s = null;
@@ -310,7 +315,7 @@ public class DBaccess {
                     String carHowMuch= rs.getString("car_how_much");
                     int carTypeId = rs.getInt("cartype_id");
                     //nu laves objektet
-                    Car addman = new Car(carID, carBrand, carFuel, carRegisterNumber, carRegisterDate, carHowMuch, carTypeId);
+                    Car addman = new Car(carID, carBrand, carFuel, carRegisterNumber, carRegisterDate, carHowMuch, carTypes.get(carTypeId-1));
                             //objektet tilføjes på vores arrayliste
                             car.add(addman);
 

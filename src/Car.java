@@ -5,9 +5,9 @@ public class Car {
     private String regNumber;
     private String regYear;
     private String odometer;
-    private int carType;
+    private CarType carType;
 
-    public Car(int carId, String brand, String fuel, String regNumber, String regYear, String odometer, int carType) {
+    public Car(int carId, String brand, String fuel, String regNumber, String regYear, String odometer, CarType carType) {
         this.carId = carId;
         this.brand = brand;
         this.fuel = fuel;
