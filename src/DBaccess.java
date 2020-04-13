@@ -19,7 +19,7 @@ public class DBaccess {
             Statement s = null;
             Class.forName(JDBC_DRIVER);
 
-            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
             s = con.createStatement();
 
             ResultSet rs = s.executeQuery("SELECT renter_name,  renter_city  from renters");
@@ -54,7 +54,7 @@ public class DBaccess {
                 Statement s = null;
                 Class.forName(JDBC_DRIVER);
 
-                con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+                con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
                 s = con.createStatement();
 
                 ResultSet rs = s.executeQuery("SELECT renter_id, renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_licence_since  FROM renters");
@@ -101,7 +101,7 @@ public class DBaccess {
         try {
             con = null;
             Class.forName(JDBC_DRIVER);
-            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
 
             Calendar calendar = Calendar.getInstance();
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
@@ -168,7 +168,7 @@ public class DBaccess {
         try {
             con = null;
             Class.forName(JDBC_DRIVER);
-            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
 
             Calendar calendar = Calendar.getInstance();
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
@@ -300,7 +300,7 @@ public class DBaccess {
             Statement s = null;
             Class.forName(JDBC_DRIVER);
 
-            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
             s = con.createStatement();
 
             ResultSet rs = s.executeQuery("SELECT car_id, car_brand, car_fuel, car_register_number, car_register_date, car_how_much, cartype_id FROM car");
@@ -349,7 +349,7 @@ public class DBaccess {
             Statement s = null;
             Class.forName(JDBC_DRIVER);
 
-            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
             s = con.createStatement();
 
             ResultSet rs = s.executeQuery("SELECT cartype_id, cartype_description, cartype_gear, cartype_motorpower, cartype_cruisecontrol, cartype_aircon, cartype_seats FROM cartype");
@@ -392,7 +392,7 @@ public class DBaccess {
         try {
             con = null;
             Class.forName(JDBC_DRIVER);
-            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Razzerthejazzer21");
 
             Calendar calendar = Calendar.getInstance();
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());

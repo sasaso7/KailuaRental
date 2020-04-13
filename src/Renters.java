@@ -7,6 +7,9 @@ public class Renters {
     public String phone;
     public String mail;
     public String address;
+
+
+
     public String city;
     public String zip;
     public String licenceNumber;
@@ -25,7 +28,7 @@ public class Renters {
         this.licenceNumber = licenceNumber;
         this.licenceSince = licenceSince;
     }
-
+    //Getters and Setters
     public int getRenterID() {
         return renterID;
     }
@@ -108,17 +111,9 @@ public class Renters {
 
     @Override
     public String toString() {
-        return(
-                "Firstname: " + renterFirstName +
-                "\nLastname: " + renterLastName +
-                "\nTelephone: " + phone +
-                "\nEmail: " + mail +
-                "\nAddress: " + address +
-                "\nCity: " + city +
-                "\nZipcode: " + zip +
-                "\nDrivers licence number:  " + licenceNumber +
-                "\nDrivers licence since: " + licenceSince + "\n"
-        );
-    }
+        return String.format ("FirstName: %-8s LastName: %-14s Telephone: %-12s Email: %-24s Address: %-21s City: %-12s Zipcode: %-6s DLN: %-8s DLS: %-10s"
+                ,getRenterFirstName(),getRenterLastName(),getPhone(),getMail(),getAddress(),getCity(),getZip(),getLicenceNumber(),getLicenceSince());
 
+
+    }
 }

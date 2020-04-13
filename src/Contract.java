@@ -21,6 +21,9 @@ public class Contract {
         this.contractEnd = contractEnd;
     }
 
+    public static void createContract(ArrayList<Renters> renters, ArrayList<Car> cars, ArrayList<CarType> carTypes) {
+    }
+
     public Car getContractCar() {
         return contractCar;
     }
