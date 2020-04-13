@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -449,19 +450,16 @@ public class DBaccess {
             String[] rentStart  = inputStart.split("-");
             String sqlRentStart = rentStart[2] + rentStart[1] + rentStart[0];
             preparedStmt.setString(5, sqlRentStart);
-
-            Date d1 = new Date(Integer.parseInt(rentStart[2]), Integer.parseInt(rentStart[1]), Integer.parseInt(rentStart[0]));
-
-            System.out.println("From day: " + d1.getDay() + "-" + d1.getMonth() + "-" + d1.getYear());
+            LocalDate d1 = LocalDate.of(Integer.parseInt(rentStart[2]), Integer.parseInt(rentStart[1]), Integer.parseInt(rentStart[0]));
+            System.out.println("From day: " + d1);
 
             System.out.println("Enter the ending date for the rental DD-MM-YYYY");
             String inputEnd = console.nextLine();
-            String[] rentEnd = inputStart.split("-");
+            String[] rentEnd = inputEnd.split("-");
             String sqlRentEnd = rentEnd[2] + rentEnd[1] + rentEnd[0];
             preparedStmt.setString(6, sqlRentEnd);
-
-            Date d2 = new Date(Integer.parseInt(rentEnd[2]), Integer.parseInt(rentEnd[1]), Integer.parseInt(rentEnd[0]));
-            System.out.println("From day: " + d2.getDay() + "-" + d2.getMonth() + "-" + d2.getYear());
+            LocalDate d2 = LocalDate.of(Integer.parseInt(rentEnd[2]), Integer.parseInt(rentEnd[1]), Integer.parseInt(rentEnd[0]));
+            System.out.println("From day: " + d2);
 
             int carTokenSlot = 0;
             int rentersTokenSlot = 0;
@@ -510,7 +508,7 @@ public class DBaccess {
             con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
             s = con.createStatement();
 
-            ResultSet rs = s.executeQuery("SELECT contract_id, renter_id, car_id, car_odometer_start, contract_start, contact_end FROM contract");
+            ResultSet rs = s.executeQuery("SELECT contract_id, renter_id, car_id, car_odometer_start, contract_start, contract_end FROM contract");
             if (rs != null)
                 //Dette er et while loop, for at køre igennem database tabellen og tilføje data til at arrayliste
                 //som kan bruges i java
@@ -535,10 +533,18 @@ public class DBaccess {
                         }
 
                     String odometerStart = rs.getString("car_odometer_start");
-                    Date contractStart = rs.getDate("contract_start");
-                    Date contractEnd = rs.getDate("contract_end");
+                    String contractStart = rs.getString("contract_start");
+                    String contractEnd = rs.getString("contract_end");
+
+                    String[] contractStartTokens = contractStart.split("-");
+                    String[] contractEndTokens = contractEnd.split("-");
+
+                    LocalDate contractStartObj = LocalDate.of(Integer.parseInt(contractStartTokens[0]),Integer.parseInt(contractStartTokens[1]) ,Integer.parseInt(contractStartTokens[2]));
+                    LocalDate contractEndObj = LocalDate.of(Integer.parseInt(contractEndTokens[0]), Integer.parseInt(contractEndTokens[1]), Integer.parseInt(contractEndTokens[2]));
 
                     //nu laves objektet
+                    Contract obj = new Contract(contracts.size()+1, car.get(carIdToken), renters.get(renterIdToken), odometerStart, contractStartObj, contractEndObj);
+                    contracts.add(obj);
 
 
 

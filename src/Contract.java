@@ -1,5 +1,7 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Contract {
@@ -7,10 +9,10 @@ public class Contract {
     private Car contractCar;
     private Renters contractRenters;
     private String carOdometer;
-    private Date contractStart;
-    private Date contractEnd;
+    private LocalDate contractStart;
+    private LocalDate contractEnd;
 
-    public Contract(int contractId, Car contractCar, Renters contractRenters, String carOdometer, Date contractStart, Date contractEnd) {
+    public Contract(int contractId, Car contractCar, Renters contractRenters, String carOdometer, LocalDate contractStart, LocalDate contractEnd) {
         this.contractId = contractId;
         this.contractCar = contractCar;
         this.contractRenters = contractRenters;
