@@ -21,7 +21,43 @@ public class Contract {
         this.contractEnd = contractEnd;
     }
 
-    public static void createContract(ArrayList<Renters> renters, ArrayList<Car> cars, ArrayList<CarType> carTypes) {
+    @Override
+    public String toString() {
+        return String.format ("Contract ID: %-4s Car model: %-19s First name: %-9s Last name: %-14s Cars odometer: %-12s Date start: %-12s Date end: %-12s",
+                getContractId(), getContractCar().getBrand(), getContractRenters().getRenterFirstName(), getContractRenters().getRenterLastName(), getContractCar().getOdometer(),
+                getContractStart(), getContractEnd());
+    }
+
+    public int getContractId() {
+        return contractId;
+    }
+
+    public void setContractId(int contractId) {
+        this.contractId = contractId;
+    }
+
+    public String getCarOdometer() {
+        return carOdometer;
+    }
+
+    public void setCarOdometer(String carOdometer) {
+        this.carOdometer = carOdometer;
+    }
+
+    public LocalDate getContractStart() {
+        return contractStart;
+    }
+
+    public void setContractStart(LocalDate contractStart) {
+        this.contractStart = contractStart;
+    }
+
+    public LocalDate getContractEnd() {
+        return contractEnd;
+    }
+
+    public void setContractEnd(LocalDate contractEnd) {
+        this.contractEnd = contractEnd;
     }
 
     public Car getContractCar() {

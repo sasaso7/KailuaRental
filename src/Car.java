@@ -71,7 +71,8 @@ public class Car {
 
     @Override
     public String toString(){
-        return String.format ("CarId: %-4s Brand: %-18s Fuel: %-10s RegNumber: %-10s RegYear: %-12s Odometer: %-12s CarType: %-10s", getCarId(), getBrand(),getFuel(),getRegNumber(),getRegYear(),getOdometer(),getCarType());
+        return String.format ("CarId: %-4s Brand: %-18s Fuel: %-10s RegNumber: %-10s RegYear: %-12s Odometer: %-12s CarType: %-10s",
+                getCarId(), getBrand(),getFuel(),getRegNumber(),getRegYear(),getOdometer(),getCarType());
     }
 
     public void setCarType(CarType carType) {

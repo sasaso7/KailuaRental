@@ -11,14 +11,8 @@ public class CarType {
 
     @Override
     public String toString() {
-        return  "cartypeID=" + cartypeID +
-                ", cartypeDescription='" + cartypeDescription + '\'' +
-                ", Gear='" + Gear + '\'' +
-                ", motorpower='" + motorpower + '\'' +
-                ", cruisecontrol='" + cruisecontrol + '\'' +
-                ", aircon='" + aircon + '\'' +
-                ", seats='" + seats + '\'' +
-                '}';
+        return  String.format ("Car type ID: %-6s Car type: %-9s Gear: %-9s Motor power: %-10s Cruise control: %-8s Aircon: %-8s Seats: %-8s",
+                getCartypeID(), getCartypeDescription(), getGear(), getMotorpower(), getCruisecontrol(), getAircon(), getSeats());
     }
 
     //constructor
@@ -32,4 +26,59 @@ public class CarType {
         this.seats = seats;
     }
 
+    public int getCartypeID() {
+        return cartypeID;
+    }
+
+    public void setCartypeID(int cartypeID) {
+        this.cartypeID = cartypeID;
+    }
+
+    public String getCartypeDescription() {
+        return cartypeDescription;
+    }
+
+    public void setCartypeDescription(String cartypeDescription) {
+        this.cartypeDescription = cartypeDescription;
+    }
+
+    public String getGear() {
+        return Gear;
+    }
+
+    public void setGear(String gear) {
+        Gear = gear;
+    }
+
+    public String getMotorpower() {
+        return motorpower;
+    }
+
+    public void setMotorpower(String motorpower) {
+        this.motorpower = motorpower;
+    }
+
+    public String getCruisecontrol() {
+        return cruisecontrol;
+    }
+
+    public void setCruisecontrol(String cruisecontrol) {
+        this.cruisecontrol = cruisecontrol;
+    }
+
+    public String getAircon() {
+        return aircon;
+    }
+
+    public void setAircon(String aircon) {
+        this.aircon = aircon;
+    }
+
+    public String getSeats() {
+        return seats;
+    }
+
+    public void setSeats(String seats) {
+        this.seats = seats;
+    }
 }

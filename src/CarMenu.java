@@ -17,6 +17,8 @@ public class CarMenu {
         ArrayList<Renters> renters = new ArrayList();
         DBaccess.getCars(cars, carTypes);
         DBaccess.getRenters(renters);
+        ArrayList<Contract> contracts = new ArrayList();
+        DBaccess.getContracts(cars, carTypes, renters, contracts);
         //Contract.createContract(renters, cars, carTypes);
 
         //formats and prints date at start of the new session
@@ -76,13 +78,18 @@ public class CarMenu {
                 case 3:
                     System.out.println("_________________________________________ ");
                     System.out.println("|\t        - Kailua Car Rental -       |");
-                    System.out.println("|Tryk #1 for at oprette en ny contract  |");
+                    System.out.println("|Tryk #1 for at printe en liste af contracts ud|");
+                    System.out.println("|Tryk #2 for at oprette en ny contract  |");
                     System.out.println("|Tryk #0 for at vende tilbage til menuen|");
                     System.out.println("-----------------------------------------");
                     int menuChoice4 = console.nextInt();
                     switch (menuChoice4) { //Nested Switch for Contract
                         case 1:
-                            Contract.createContract(renters, cars, carTypes);
+                            for(Contract co : contracts){
+                                System.out.println(co);
+                            }
+                        case 2:
+                            DBaccess.createContract(renters, cars, carTypes, contracts);
                             break;
                     }
 
