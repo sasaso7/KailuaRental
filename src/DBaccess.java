@@ -387,4 +387,181 @@ public class DBaccess {
             System.exit(1);  // terminate program
         }
     }
+    public static void createContract(ArrayList<Renters> renters, ArrayList<Car> cars, ArrayList<CarType> carTypes, ArrayList<Contract> contracts) {
+        try {
+            con = null;
+            Class.forName(JDBC_DRIVER);
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+
+            Calendar calendar = Calendar.getInstance();
+            java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+
+            String query =  "insert into contract (contract_id, renter_id, car_id, car_odometer_start, contract_start, contract_end)" + " VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+
+            Scanner console = new Scanner(System.in);
+            String odometerStart = "";
+            int inputRenterId = 0;
+            System.out.println("You have choosen to create a new contract");
+            System.out.println("Would you like to add a new customer? y/n");
+            String input = console.nextLine();
+            if (input.equals("y")) {
+                DBaccess.insertRenters(renters);
+            } else if (input.equals("n")) {
+                System.out.println("Enter the first name of the customer");
+                String inputName = console.nextLine();
+                for (int i = 0; i < renters.size(); i++) {
+                    if (inputName.equals(renters.get(i).renterFirstName)) {
+                        System.out.println(renters.get(i).renterFirstName + " " + renters.get(i).renterLastName + " - " + renters.get(i).phone + " - RENTER ID: " + renters.get(i).renterID);
+                    }
+                }
+                System.out.println("Enter the Renter ID of the desired customer");
+                inputRenterId = console.nextInt();
+                preparedStmt.setInt(2, inputRenterId);
+                for (int j = 0; j < renters.size(); j++) {
+                    if (inputRenterId == renters.get(j).renterID) {
+                        System.out.println(renters.get(j));
+                    }
+                }
+            }
+            System.out.printf("Press 1 to view luxury cars%n Press 2 to view sport cars%n Press 3 to view family cars%n");
+            int inputCar = console.nextInt();
+            String carType = "";
+            if (inputCar == 1) {
+                carType = "Luxury";
+            } else if (inputCar == 2) {
+                carType = "Sport";
+            } else if (inputCar == 3) {
+                carType = "Family";
+            }
+            for (int i = 0; i < cars.size(); i++) {
+                if (cars.get(i).carType.cartypeDescription.equals(carType)) {
+                    System.out.printf("Model: " + cars.get(i).getBrand() + " - " + cars.get(i).getOdometer() + " - CAR ID: "
+                            + cars.get(i).getCarId() + "%n Type: " + cars.get(i).carType + "%n");
+                }
+            }
+            System.out.println("Enter the CAR ID of the desired car");
+            int inputCarId = console.nextInt();
+            preparedStmt.setInt(3, inputCarId);
+            console.nextLine();
+            System.out.println("Enter the starting date for the rental DD-MM-YYYY");
+            String inputStart = console.nextLine();
+            String[] rentStart  = inputStart.split("-");
+            String sqlRentStart = rentStart[2] + rentStart[1] + rentStart[0];
+            preparedStmt.setString(5, sqlRentStart);
+
+            Date d1 = new Date(Integer.parseInt(rentStart[2]), Integer.parseInt(rentStart[1]), Integer.parseInt(rentStart[0]));
+
+            System.out.println("From day: " + d1.getDay() + "-" + d1.getMonth() + "-" + d1.getYear());
+
+            System.out.println("Enter the ending date for the rental DD-MM-YYYY");
+            String inputEnd = console.nextLine();
+            String[] rentEnd = inputStart.split("-");
+            String sqlRentEnd = rentEnd[2] + rentEnd[1] + rentEnd[0];
+            preparedStmt.setString(6, sqlRentEnd);
+
+            Date d2 = new Date(Integer.parseInt(rentEnd[2]), Integer.parseInt(rentEnd[1]), Integer.parseInt(rentEnd[0]));
+            System.out.println("From day: " + d2.getDay() + "-" + d2.getMonth() + "-" + d2.getYear());
+
+            int carTokenSlot = 0;
+            int rentersTokenSlot = 0;
+
+            for (int i = 0; i < cars.size(); i++) {
+                if (cars.get(i).getCarId() == inputCarId) {
+                    carTokenSlot = i;
+                    odometerStart = cars.get(i).getOdometer();
+                    preparedStmt.setString(4, odometerStart);
+                }
+            }
+            for (int i = 0; i < renters.size(); i++) {
+                if (renters.get(i).getRenterID() == inputRenterId) {
+                    rentersTokenSlot = i;
+                }
+            }
+
+            preparedStmt.setInt(1,contracts.size()+1);
+            preparedStmt.execute();
+
+            Contract obj = new Contract(contracts.size() + 1, cars.get(carTokenSlot), renters.get(rentersTokenSlot), odometerStart, d1, d2);
+            contracts.add(obj);
+            con.close();
+
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch (ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
+    public static void getContracts(ArrayList<Car> car, ArrayList<CarType> carTypes, ArrayList<Renters> renters, ArrayList<Contract> contracts){
+        try {
+            con = null;
+            Statement s = null;
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", "Skole1234%");
+            s = con.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT contract_id, renter_id, car_id, car_odometer_start, contract_start, contact_end FROM contract");
+            if (rs != null)
+                //Dette er et while loop, for at køre igennem database tabellen og tilføje data til at arrayliste
+                //som kan bruges i java
+                while (rs.next()) {
+                    int contractId = rs.getInt("contract_id");
+
+                    int renterId = rs.getInt("renter_id");
+                    int renterIdToken = 0;
+                        //find hvilken obj i renters array der har matching renterID
+                        for(int i = 0; i < renters.size(); i++){
+                            if(renters.get(i).getRenterID() == renterId){
+                                renterIdToken = i;
+                            }
+                        }
+
+                    int carId = rs.getInt("car_id");
+                    int carIdToken = 0;
+                        for(int i = 0; i < car.size(); i++){
+                            if(car.get(i).getCarId() == carId){
+                                carIdToken = i;
+                            }
+                        }
+
+                    String odometerStart = rs.getString("car_odometer_start");
+                    Date contractStart = rs.getDate("contract_start");
+                    Date contractEnd = rs.getDate("contract_end");
+
+                    //nu laves objektet
+
+
+
+                }
+            s.close();
+            con.close();
+
+
+
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch (ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
+
 }

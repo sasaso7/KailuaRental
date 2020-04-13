@@ -9,7 +9,8 @@ public class Main {
         ArrayList<Renters> renters = new ArrayList();
         DBaccess.getCars(cars, carTypes);
         DBaccess.getRenters(renters);
-        Contract.createContract(renters, cars, carTypes);
+        ArrayList<Contract> contracs = new ArrayList();
+        DBaccess.createContract(renters, cars, carTypes, contracs);
 
         //DBaccess.insertCar(cars, carTypes);
        // System.out.println(cars);

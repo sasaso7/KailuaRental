@@ -9,6 +9,18 @@ public class CarType {
     public String seats;
 
 
+    @Override
+    public String toString() {
+        return  "cartypeID=" + cartypeID +
+                ", cartypeDescription='" + cartypeDescription + '\'' +
+                ", Gear='" + Gear + '\'' +
+                ", motorpower='" + motorpower + '\'' +
+                ", cruisecontrol='" + cruisecontrol + '\'' +
+                ", aircon='" + aircon + '\'' +
+                ", seats='" + seats + '\'' +
+                '}';
+    }
+
     //constructor
     public CarType(int cartypeID, String cartypeDescription, String gear, String motorpower, String cruisecontrol, String aircon, String seats) {
         this.cartypeID = cartypeID;

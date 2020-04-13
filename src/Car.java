@@ -5,7 +5,7 @@ public class Car {
     private String regNumber;
     private String regYear;
     private String odometer;
-    private CarType carType;
+    public CarType carType;
 
     public Car(int carId, String brand, String fuel, String regNumber, String regYear, String odometer, CarType carType) {
         this.carId = carId;
@@ -14,6 +14,22 @@ public class Car {
         this.regNumber = regNumber;
         this.regYear = regYear;
         this.odometer = odometer;
+        this.carType = carType;
+    }
+
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
+
+    public CarType getCarType() {
+        return carType;
+    }
+
+    public void setCarType(CarType carType) {
         this.carType = carType;
     }
 
