@@ -29,7 +29,7 @@ public class CarMenu {
 
         do {
             System.out.println("__________________________________");
-            System.out.println("|\t   - Kailua Car Rental -     |");
+            System.out.println("|\t     - Kailua Car Rental -    |");
             System.out.println("|Press 1# for Cars                |");
             System.out.println("|Press 2# for Renters             |");
             System.out.println("|Press 3# for Contract            |");
@@ -41,10 +41,11 @@ public class CarMenu {
             switch (menuChoice) {
                 case 1:
                     System.out.println("___________________________________________");
-                    System.out.println("|\t       - Kailua Car Rental -           |");
+                    System.out.println("|\t         - Kailua Car Rental -          |");
                     System.out.println("|Press #1 to print car list                 |");
                     System.out.println("|Press #2 to add a car                      |");
                     System.out.println("|Press #3 to delete a car                   |");
+                    System.out.println("|Press #4 to update a car                   |");
                     System.out.println("|Press #0 to return to main menu            |");
                     System.out.println("--------------------------------------------");
                     int menuChoice2 = console.nextInt();
@@ -60,10 +61,13 @@ public class CarMenu {
                         case 3:
                             DBaccess.deleteCar(cars);
                             break;
+                        case 4:
+                            DBaccess.updateCar(cars);
+                            break;
                     }
                 case 2:
                     System.out.println("_____________________________________________ ");
-                    System.out.println("|\t        - Kailua Car Rental -            |");
+                    System.out.println("|\t        - Kailua Car Rental -             |");
                     System.out.println("|Press #1 to print renters list               |");
                     System.out.println("|Press #2 to add new renter                   |");
                     System.out.println("|Press #0 to return to main menu              |");
@@ -81,7 +85,7 @@ public class CarMenu {
                     break;
                 case 3:
                     System.out.println("_________________________________________ ");
-                    System.out.println("|\t        - Kailua Car Rental -       |");
+                    System.out.println("|\t          - Kailua Car Rental -      |");
                     System.out.println("|Press #1 to print contract list         |");
                     System.out.println("|Press #2 to add new contract            |");
                     System.out.println("|Press #0 to return to main menu         |");
