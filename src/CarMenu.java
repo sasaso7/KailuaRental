@@ -88,6 +88,7 @@ public class CarMenu {
                             for(Contract co : contracts){
                                 System.out.println(co);
                             }
+                            break;
                         case 2:
                             DBaccess.createContract(renters, cars, carTypes, contracts);
                             break;
