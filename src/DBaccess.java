@@ -607,5 +607,70 @@ public class DBaccess {
         System.exit(1);  // terminate program
     }
 }
+    public static void contractEdit(ArrayList<Contract> contracts, ArrayList<Car> cars){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Which of these contracts do you want to edit?");
+        int i = 0;
+        for(i=0; i < contracts.size(); i++){
+            System.out.println("Press #"+i+ " for " +contracts.get(i));
+        }
+        String contractDecider = in.nextLine();
+        System.out.println("If you want to edit which car is in the contract press #1");
+        System.out.println("If you want to edit how lang the car contract is running press #2");
+        int contractIf = in.nextInt();
+        try {
+
+            if(contractIf == 1){
+                System.out.println("Which car do you want to be in the contract?");
+                int j = 0;
+                for(j = 0; j<cars.size();j++){
+                    System.out.println("Press # "+j+ "for " + cars.get(j));
+                }
+                int carDecider = in.nextInt();
+                PreparedStatement ps = con.prepareStatement("UPDATE contracts SET car_id = ?, WHERE contract_id = ?");
+                ps.setString(2, contractDecider);
+                ps.setInt(1, carDecider);
+                ps.executeUpdate();
+                ps.close();
+            }else if(contractIf == 2){
+                System.out.println("How many days do you want to extend the contracts with?");
+                int manyDays = in.nextInt();
+                LocalDate tempdate = contracts.get(i).getContractEnd();
+                LocalDate newEndDate = tempdate.plusDays(manyDays);
+                System.out.println("The contract is now running till " + newEndDate);
+                PreparedStatement ps = con.prepareStatement("UPDATE contracts SET contract_end = ?, WHERE contract_id = ? ");
+                ps.setString(2, contractDecider);
+                ps.setDate(1, java.sql.Date.valueOf(newEndDate));
+                ps.close();
+            }
+
+
+
+            con = null;
+            Statement s = null;
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
+            s = con.createStatement();
+
+
+            s.close();
+            con.close();
+
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch (ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
 
 }
