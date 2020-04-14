@@ -12,7 +12,7 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-    static String password = "ElfenbenNisse19";
+    static String password = "Skole1234%";
 
     public static void getDB(){
         try {
@@ -607,6 +607,68 @@ public class DBaccess {
         System.exit(1);  // terminate program
     }
 }
+
+    public static void updateCar(ArrayList<Car> cars) {
+        Scanner console = new Scanner(System.in);
+        try {
+            con = null;
+            Class.forName(JDBC_DRIVER);
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
+
+            Calendar calendar = Calendar.getInstance();
+            java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+
+            System.out.printf("Press 1 to view luxury cars%n Press 2 to view sport cars%n Press 3 to view family cars%n");
+            int inputCar = console.nextInt();
+            String carType = "";
+            if (inputCar == 1) {
+                carType = "Luxury";
+            } else if (inputCar == 2) {
+                carType = "Sport";
+            } else if (inputCar == 3) {
+                carType = "Family";
+            }
+            for (int i = 0; i < cars.size(); i++) {
+                if (cars.get(i).carType.cartypeDescription.equals(carType)) {
+                    System.out.printf("Model: " + cars.get(i).getBrand() + " - " + cars.get(i).getOdometer() + " - CAR ID: "
+                            + cars.get(i).getCarId() + "%n Type: " + cars.get(i).carType + "%n");
+                }
+            }
+            System.out.println("Enter the CAR ID of the car you would like to change");
+            int inputCarId = console.nextInt();
+            console.nextLine();
+            System.out.println("What is the updated odometer number?");
+            String newOdometer = console.nextLine();
+
+            for (int i = 0; i < cars.size(); i++) {
+                if (inputCarId == cars.get(i).getCarId()) {
+                    cars.get(i).setOdometer(newOdometer);
+                }
+            }
+
+            PreparedStatement preparedStmt = con.prepareStatement("UPDATE car SET car_how_much = ? WHERE car_id = ?");
+            preparedStmt.setString(1, newOdometer);
+            preparedStmt.setInt(2, inputCarId);
+
+            preparedStmt.execute();
+            preparedStmt.close();
+
+
+            con.close();
+
+        } catch (SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            } catch (SQLException sql) {
+            }
+        } catch (ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
     public static void contractEdit(ArrayList<Contract> contracts, ArrayList<Car> cars){
         Scanner in = new Scanner(System.in);
         System.out.println("Which of these contracts do you want to edit?");
