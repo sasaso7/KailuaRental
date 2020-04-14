@@ -30,10 +30,10 @@ public class CarMenu {
         do {
             System.out.println("__________________________________");
             System.out.println("|\t   - Kailua Car Rental -     |");
-            System.out.println("|Tryk 1# for Cars                |");
-            System.out.println("|Tryk 2# for Renters             |");
-            System.out.println("|Tryk 3# for Contract            |");
-            System.out.println("|Tryk 4# for at lukke programmet |");
+            System.out.println("|Press 1# for Cars                |");
+            System.out.println("|Press 2# for Renters             |");
+            System.out.println("|Press 3# for Contract            |");
+            System.out.println("|Press 4# to exit                 |");
             System.out.println("----------------------------------");
 
             int menuChoice = console.nextInt();
@@ -41,11 +41,11 @@ public class CarMenu {
             switch (menuChoice) {
                 case 1:
                     System.out.println("___________________________________________");
-                    System.out.println("|\t       - Kailua Car Rental -            |");
-                    System.out.println("|Tryk #1 for at printe en liste af biler ud|");
-                    System.out.println("|Tryk #2 for at tilføje en ny bil          |");
-                    System.out.println("|Tryk #3 for at slette en bil              |");
-                    System.out.println("|Tryk #0 for at gå tilbage til menu        |");
+                    System.out.println("|\t       - Kailua Car Rental -           |");
+                    System.out.println("|Press #1 to print car list                 |");
+                    System.out.println("|Press #2 to add a car                      |");
+                    System.out.println("|Press #3 to delete a car                   |");
+                    System.out.println("|Press #0 to return to main menu            |");
                     System.out.println("--------------------------------------------");
                     int menuChoice2 = console.nextInt();
                     switch (menuChoice2) { //Nested switch for Cars
@@ -64,9 +64,9 @@ public class CarMenu {
                 case 2:
                     System.out.println("_____________________________________________ ");
                     System.out.println("|\t        - Kailua Car Rental -            |");
-                    System.out.println("|Tryk #1 for at printe en liste af renters ud|");
-                    System.out.println("|Tryk #2 for at tilføje en ny renter         |");
-                    System.out.println("|Tryk #0 for at vende tilbage til menuen     |");
+                    System.out.println("|Press #1 to print renters list               |");
+                    System.out.println("|Press #2 to add new renter                   |");
+                    System.out.println("|Press #0 to return to main menu              |");
                     System.out.println("----------------------------------------------");
                     int menuChoice3 = console.nextInt();
                     switch (menuChoice3) { //Nested switch for renters
@@ -82,9 +82,9 @@ public class CarMenu {
                 case 3:
                     System.out.println("_________________________________________ ");
                     System.out.println("|\t        - Kailua Car Rental -       |");
-                    System.out.println("|Tryk #1 for at printe en liste af contracts ud|");
-                    System.out.println("|Tryk #2 for at oprette en ny contract  |");
-                    System.out.println("|Tryk #0 for at vende tilbage til menuen|");
+                    System.out.println("|Press #1 to print contract list         |");
+                    System.out.println("|Press #2 to add new contract            |");
+                    System.out.println("|Press #0 to return to main menu         |");
                     System.out.println("-----------------------------------------");
                     int menuChoice4 = console.nextInt();
                     switch (menuChoice4) { //Nested Switch for Contract
@@ -108,4 +108,3 @@ public class CarMenu {
         } while(isRunning);
 
     }
-}
