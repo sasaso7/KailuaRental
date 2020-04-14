@@ -580,7 +580,7 @@ public class DBaccess {
             con = DriverManager.getConnection(DATABASE_URL, "root", password);
             s = con.createStatement();
 
-            String query = "delete from car where carID=?";
+            String query = "delete from car where car_id=?";
             PreparedStatement PreparedStm = con.prepareStatement(query);
 
             System.out.println("Which car do you wish to delete from the database? \nChoose from carID number");
