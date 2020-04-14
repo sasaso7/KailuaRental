@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CarMenu {
-    public static void Menu() throws FileNotFoundException{
+    public static void Menu() throws FileNotFoundException {
         Scanner console = new Scanner(System.in);
         boolean isRunning = true;
 
@@ -89,7 +89,7 @@ public class CarMenu {
                     int menuChoice4 = console.nextInt();
                     switch (menuChoice4) { //Nested Switch for Contract
                         case 1:
-                            for(Contract co : contracts){
+                            for (Contract co : contracts) {
                                 System.out.println(co);
                             }
                             break;
@@ -105,6 +105,7 @@ public class CarMenu {
                     break;
             }
 
-        } while(isRunning);
+        } while (isRunning);
 
     }
+}
