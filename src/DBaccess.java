@@ -570,7 +570,7 @@ public class DBaccess {
             System.exit(1);  // terminate program
         }
     }
-    public static void DeleteCar(ArrayList<Car> cars){
+    public static void deleteCar(ArrayList<Car> cars){
         Scanner in = new Scanner(System.in);
         try {
             con = null;

@@ -41,9 +41,10 @@ public class CarMenu {
             switch (menuChoice) {
                 case 1:
                     System.out.println("___________________________________________");
-                    System.out.println("|\t       - Kailua Car Rental -           |");
+                    System.out.println("|\t       - Kailua Car Rental -            |");
                     System.out.println("|Tryk #1 for at printe en liste af biler ud|");
                     System.out.println("|Tryk #2 for at tilføje en ny bil          |");
+                    System.out.println("|Tryk #3 for at slette en bil              |");
                     System.out.println("|Tryk #0 for at gå tilbage til menu        |");
                     System.out.println("--------------------------------------------");
                     int menuChoice2 = console.nextInt();
@@ -55,8 +56,11 @@ public class CarMenu {
                             break;
                         case 2:
                             DBaccess.insertCar(cars, carTypes);
+                            break;
+                        case 3:
+                            DBaccess.deleteCar(cars);
+                            break;
                     }
-                    break;
                 case 2:
                     System.out.println("_____________________________________________ ");
                     System.out.println("|\t        - Kailua Car Rental -            |");
