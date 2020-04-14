@@ -12,7 +12,7 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-    static String password = "1234";
+    static String password = "ElfenbenNisse19";
 
     public static void getDB(){
         try {
@@ -570,5 +570,42 @@ public class DBaccess {
             System.exit(1);  // terminate program
         }
     }
+    public static void DeleteCar(ArrayList<Car> cars){
+        Scanner in = new Scanner(System.in);
+        try {
+            con = null;
+            Statement s = null;
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
+            s = con.createStatement();
+
+            String query = "delete from car where carID=?";
+            PreparedStatement PreparedStm = con.prepareStatement(query);
+
+            System.out.println("Which car do you wish to delete from the database? \nChoose from carID number");
+            int a = in.nextInt();
+            PreparedStm.setInt(1, a);
+            PreparedStm.executeUpdate();
+
+            System.out.println("Record deleted succesfully!");
+
+        s.close();
+        con.close();
+    }
+        catch(SQLException sqlex) {
+        try {
+            System.out.println(sqlex.getMessage());
+            con.close();
+            System.exit(1);  // terminate program
+        }
+        catch(SQLException sql){}
+    }
+        catch(ClassNotFoundException noClass) {
+        System.err.println("Driver Class not found");
+        System.out.println(noClass.getMessage());
+        System.exit(1);  // terminate program
+    }
+}
 
 }
