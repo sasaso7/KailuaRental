@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class DBaccess {
 
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -451,7 +453,7 @@ public class DBaccess {
             String[] rentStart  = inputStart.split("-");
             String sqlRentStart = rentStart[2] + rentStart[1] + rentStart[0];
             preparedStmt.setString(5, sqlRentStart);
-            LocalDate d1 = LocalDate.of(Integer.parseInt(rentStart[2]), Integer.parseInt(rentStart[1]), Integer.parseInt(rentStart[0]));
+            LocalDate d1 = LocalDate.of(parseInt(rentStart[2]), parseInt(rentStart[1]), parseInt(rentStart[0]));
             System.out.println("From day: " + d1);
 
             System.out.println("Enter the ending date for the rental DD-MM-YYYY");
@@ -459,7 +461,7 @@ public class DBaccess {
             String[] rentEnd = inputEnd.split("-");
             String sqlRentEnd = rentEnd[2] + rentEnd[1] + rentEnd[0];
             preparedStmt.setString(6, sqlRentEnd);
-            LocalDate d2 = LocalDate.of(Integer.parseInt(rentEnd[2]), Integer.parseInt(rentEnd[1]), Integer.parseInt(rentEnd[0]));
+            LocalDate d2 = LocalDate.of(parseInt(rentEnd[2]), parseInt(rentEnd[1]), parseInt(rentEnd[0]));
             System.out.println("From day: " + d2);
 
             int carTokenSlot = 0;
@@ -540,8 +542,8 @@ public class DBaccess {
                     String[] contractStartTokens = contractStart.split("-");
                     String[] contractEndTokens = contractEnd.split("-");
 
-                    LocalDate contractStartObj = LocalDate.of(Integer.parseInt(contractStartTokens[0]),Integer.parseInt(contractStartTokens[1]) ,Integer.parseInt(contractStartTokens[2]));
-                    LocalDate contractEndObj = LocalDate.of(Integer.parseInt(contractEndTokens[0]), Integer.parseInt(contractEndTokens[1]), Integer.parseInt(contractEndTokens[2]));
+                    LocalDate contractStartObj = LocalDate.of(parseInt(contractStartTokens[0]), parseInt(contractStartTokens[1]) , parseInt(contractStartTokens[2]));
+                    LocalDate contractEndObj = LocalDate.of(parseInt(contractEndTokens[0]), parseInt(contractEndTokens[1]), parseInt(contractEndTokens[2]));
 
                     //nu laves objektet
                     Contract obj = new Contract(contracts.size()+1, car.get(carIdToken), renters.get(renterIdToken), odometerStart, contractStartObj, contractEndObj);
@@ -697,7 +699,7 @@ public class DBaccess {
             }else if(contractIf == 2){
                 System.out.println("How many days do you want to extend the contracts with?");
                 int manyDays = in.nextInt();
-                LocalDate tempdate = contracts.get(i).getContractEnd();
+                LocalDate tempdate = contracts.get(parseInt(contractDecider)).getContractEnd();
                 LocalDate newEndDate = tempdate.plusDays(manyDays);
                 System.out.println("The contract is now running till " + newEndDate);
                 PreparedStatement ps = con.prepareStatement("UPDATE contracts SET contract_end = ?, WHERE contract_id = ? ");
