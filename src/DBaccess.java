@@ -553,6 +553,9 @@ public class DBaccess {
             PreparedStatement PreparedStm = con.prepareStatement(query);
 
             System.out.println("Which car do you wish to delete from the database? \nChoose from carID number");
+            for(Car a: cars){
+                System.out.println(a);
+            }
             int a = in.nextInt();
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
