@@ -593,6 +593,10 @@ public class DBaccess {
             PreparedStatement PreparedStm = con.prepareStatement(query);
 
             System.out.println("Which contract do you wish to delete from the database? \nChoose from contract ID number");
+            for(Contract a: contracts){
+                System.out.println(a);
+            }
+
             int a = in.nextInt();
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
@@ -630,6 +634,10 @@ public class DBaccess {
             PreparedStatement PreparedStm = con.prepareStatement(query);
 
             System.out.println("Which renter do you wish to delete from the database? \nChoose from renter ID number");
+            for(Renters a: renters){
+                System.out.println(a);
+            }
+
             int a = in.nextInt();
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
