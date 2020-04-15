@@ -14,7 +14,7 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-    static String password = "1234";
+    static String password = "Skole1234%";
 
 
         //Nu bliver der lavet getRenters metoden, som skal hive alle renters ud af vores database
@@ -654,7 +654,6 @@ public class DBaccess {
         }
     }
 
-
     public static void updateCar(ArrayList<Car> cars) {
         Scanner console = new Scanner(System.in);
         try {
@@ -700,7 +699,6 @@ public class DBaccess {
             preparedStmt.execute();
             preparedStmt.close();
 
-
             con.close();
 
         } catch (SQLException sqlex) {
@@ -719,17 +717,13 @@ public class DBaccess {
     public static void contractEdit(ArrayList<Contract> contracts, ArrayList<Car> cars){
         Scanner in = new Scanner(System.in);
         System.out.println("Which of these contracts do you want to edit?");
-        //Laver en int, for at der kan tælles på den
         int i = 0;
         for(i=0; i < contracts.size(); i++){
-            //Der køres igennem arrayet for at bestemme hvilken kontrakt der skal vælges
-            System.out.println("Press #"+i+1+ " for " +contracts.get(i));
+            System.out.println("Press #"+ contracts.get(i).getContractId() + " for " + contracts.get(i).getContractRenters() + " " + contracts.get(i).getContractCar());
         }
-        //denne int bruges til at vælge kontrakt
         int contractDecider = in.nextInt();
         System.out.println("If you want to edit which car is in the contract press #1");
         System.out.println("If you want to edit how lang the car contract is running press #2");
-        //bruges til at bestemme hvad brugeren gør i if elsen
         int contractIf = in.nextInt();
         try {
             con = null;
@@ -739,9 +733,8 @@ public class DBaccess {
             con = DriverManager.getConnection(DATABASE_URL, "root", password);
             if(contractIf == 1){
                 System.out.println("Which car do you want to be in the contract?");
-                int j = 0;
-                for(j = 0; j<cars.size();j++){
-                    System.out.println("Press # "+j+ "for " + cars.get(j));
+                for(int j = 0; j < cars.size(); j++){
+                    System.out.println("Press # " + cars.get(j).getCarId() + "for " + cars.get(i).getBrand());
                 }
                 int carDecider = in.nextInt();
                 PreparedStatement ps = con.prepareStatement("UPDATE contracts SET car_id = ?, WHERE contract_id = ?");
@@ -749,6 +742,15 @@ public class DBaccess {
                 ps.setInt(1, carDecider);
                 ps.executeUpdate();
 
+                for(int x = 0; x < contracts.size(); x++){
+                    if(contracts.get(i).getContractId() == contractDecider){
+                        for(int y = 0; y < cars.size(); y++) {
+                            if(cars.get(y).getCarId() == carDecider){
+                                contracts.get(x).setContractCar(cars.get(y));
+                            }
+                        }
+                    }
+                }
                 contracts.get(contractDecider).setContractCar(cars.get(carDecider));
             }else if(contractIf == 2){
                 System.out.println("How many days do you want to extend the contracts with?");
@@ -781,5 +783,74 @@ public class DBaccess {
             System.exit(1);  // terminate program
         }
     }
+    public static void editRenters (ArrayList<Renters> renters){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the ID of the renter you want to edit");
+        for(int i=0; i < renters.size(); i++){
+            System.out.println("Press #"+ renters.get(i).getRenterID() + " for " +renters.get(i));
+        }
+        int inputRenterId = in.nextInt();
+        System.out.println("You have selected:");
+        for(Renters r : renters){
+            if(r.getRenterID() == inputRenterId) {
+                System.out.println(r);
+            }
+        }
+        try {
+            con = null;
+            Class.forName(JDBC_DRIVER);
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
+            System.out.printf("Press #1 to edit phone number %nPress #2 to edit Email %n");
+            int inputChoise = in.nextInt();
+            in.nextLine();
+            if(inputChoise == 1){
+                System.out.println("Enter the new phone number: ");
+                String newPhone = in.nextLine();
+                System.out.println("The phone number is changed to: " + newPhone);
 
+                PreparedStatement ps = con.prepareStatement("UPDATE renters SET renter_phone = ? WHERE renter_id = ?");
+                ps.setString(1, newPhone);
+                ps.setInt(2, inputRenterId);
+                ps.executeUpdate();
+
+                for(int j = 0; j < renters.size(); j++){
+                    if(renters.get(j).getRenterID() == inputRenterId) {
+                        renters.get(j).setPhone(newPhone);
+                    }
+                }
+
+            }else if(inputChoise == 2){
+                System.out.println("Enter the new Email: ");
+                String newEmail = in.nextLine();
+                System.out.println("The Email is changed to " + newEmail);
+                PreparedStatement ps = con.prepareStatement("UPDATE renters SET renter_mail = ? WHERE renter_id = ? ");
+                ps.setString(1, newEmail);
+                ps.setInt(2, inputRenterId);
+                ps.executeUpdate();
+
+                for(int j = 0; j < renters.size(); j++){
+                    if(renters.get(j).getRenterID() == inputRenterId){
+                        renters.get(j).setMail(newEmail);
+                    }
+                }
+            }
+
+
+            con.close();
+
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch (ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
 }

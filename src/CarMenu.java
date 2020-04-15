@@ -71,6 +71,7 @@ public class CarMenu {
                     System.out.println("|Press #1 to print renters list               |");
                     System.out.println("|Press #2 to add new renter                   |");
                     System.out.println("|Press #3 to delete existing renter           |");
+                    System.out.println("|Press #4 to update existing renter           |");
                     System.out.println("|Press #0 to return to main menu              |");
                     System.out.println("----------------------------------------------");
                     int menuChoice3 = console.nextInt();
@@ -86,6 +87,9 @@ public class CarMenu {
                             break;
                         case 3:
                             DBaccess.deleteRenter(renters);
+                        case 4:
+                            DBaccess.editRenters(renters);
+                            break;
                     }
                     break;
 
