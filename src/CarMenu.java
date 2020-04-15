@@ -65,6 +65,7 @@ public class CarMenu {
                             DBaccess.updateCar(cars);
                             break;
                     }
+                    break;
                 case 2:
                     System.out.println("_____________________________________________ ");
                     System.out.println("|\t        - Kailua Car Rental -             |");

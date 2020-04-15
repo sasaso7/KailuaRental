@@ -14,7 +14,7 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-    static String password = "1234";
+    static String password = "Razzerthejazzer21";
 
 
         //Nu bliver der lavet getRenters metoden, som skal hive alle renters ud af vores database
