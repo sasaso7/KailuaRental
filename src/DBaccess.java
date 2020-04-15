@@ -579,6 +579,81 @@ public class DBaccess {
         System.exit(1);  // terminate program
     }
 }
+    public static void deleteContract(ArrayList<Contract> contracts){
+        Scanner in = new Scanner(System.in);
+        try {
+            con = null;
+            Statement s = null;
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
+            s = con.createStatement();
+
+            String query = "delete from contract where contract_id=?";
+            PreparedStatement PreparedStm = con.prepareStatement(query);
+
+            System.out.println("Which contract do you wish to delete from the database? \nChoose from contract ID number");
+            int a = in.nextInt();
+            PreparedStm.setInt(1, a);
+            PreparedStm.executeUpdate();
+
+            System.out.println("Record deleted succesfully!");
+
+            s.close();
+            con.close();
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch(ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
+    public static void deleteRenter( ArrayList<Renters> renters){
+        Scanner in = new Scanner(System.in);
+        try {
+            con = null;
+            Statement s = null;
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
+            s = con.createStatement();
+
+            String query = "delete from renters where renter_id=?";
+            PreparedStatement PreparedStm = con.prepareStatement(query);
+
+            System.out.println("Which renter do you wish to delete from the database? \nChoose from renter ID number");
+            int a = in.nextInt();
+            PreparedStm.setInt(1, a);
+            PreparedStm.executeUpdate();
+
+            System.out.println("Record deleted succesfully!");
+
+            s.close();
+            con.close();
+        }
+        catch(SQLException sqlex) {
+            try {
+                System.out.println(sqlex.getMessage());
+                con.close();
+                System.exit(1);  // terminate program
+            }
+            catch(SQLException sql){}
+        }
+        catch(ClassNotFoundException noClass) {
+            System.err.println("Driver Class not found");
+            System.out.println(noClass.getMessage());
+            System.exit(1);  // terminate program
+        }
+    }
+
 
     public static void updateCar(ArrayList<Car> cars) {
         Scanner console = new Scanner(System.in);
