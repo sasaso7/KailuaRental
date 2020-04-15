@@ -84,7 +84,7 @@ public class DBaccess {
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
             //Et query bliver gjort klar så der kan fyldes values ind i
-            String query =  "insert into renters (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_license_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query =  "insert into renters (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_licence_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
