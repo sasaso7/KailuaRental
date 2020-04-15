@@ -563,7 +563,7 @@ public class DBaccess {
             int a = in.nextInt();
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
-
+            cars.remove(a-1);
             System.out.println("Record deleted succesfully!");
 
         s.close();
@@ -646,7 +646,7 @@ public class DBaccess {
             int a = in.nextInt();
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
-
+            renters.remove(a-1);
             System.out.println("Record deleted succesfully!");
 
             s.close();
