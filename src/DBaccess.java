@@ -156,8 +156,7 @@ public class DBaccess {
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
             //Her bestemmes renterID
-            int carIdCounter = cars.size();
-            int carId = carIdCounter+1;
+            int carId = cars.size()+1;
             preparedStmt.setInt(1, carId);
 
             System.out.println("Please enter the car brand");
@@ -178,8 +177,6 @@ public class DBaccess {
 
             int typeId = carTypes.size() + 1;
             preparedStmt.setInt(7, typeId);
-
-            // execute the preparedstatement
 
             String query2 = "insert into cartype (cartype_description, cartype_gear, cartype_motorpower, cartype_cruisecontrol, cartype_aircon, cartype_seats)" + " values (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt2 = con.prepareStatement(query2);
@@ -494,7 +491,7 @@ public class DBaccess {
 
                     int renterId = rs.getInt("renter_id");
                     int renterIdToken = 0;
-                        //find hvilken obj i renters array der har matching renterID
+                        //find hvilken token i renters array der har matching renterID
                         for(int i = 0; i < renters.size(); i++){
                             if(renters.get(i).getRenterID() == renterId){
                                 renterIdToken = i;
