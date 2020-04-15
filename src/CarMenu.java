@@ -99,7 +99,7 @@ public class CarMenu {
                     System.out.println("|Press #1 to print contract list         |");
                     System.out.println("|Press #2 to add new contract            |");
                     System.out.println("|Press #3 to update a contract           |");
-                    System.out.println("|Press #3 to delete a contract           |");
+                    System.out.println("|Press #4 to delete a contract           |");
                     System.out.println("|Press #0 to return to main menu         |");
                     System.out.println("-----------------------------------------");
                     int menuChoice4 = console.nextInt();

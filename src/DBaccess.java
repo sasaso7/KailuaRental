@@ -602,6 +602,7 @@ public class DBaccess {
             }
 
             int a = in.nextInt();
+            contracts.remove(a-1);
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
 
