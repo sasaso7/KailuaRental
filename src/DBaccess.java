@@ -771,27 +771,25 @@ public class DBaccess {
                     }
                 }
             }else if(contractIf == 2){
-                System.out.println("How many days do you want to extend the contracts with?");
-                int manyDays = in.nextInt(); // en int til at bestemme hvor mange dage der tilføjes
-                LocalDate tempdate = contracts.get(contractDecider).getContractEnd(); //Hiver den gamle EndDate ud for at der kan lægges oven i den
-                LocalDate newEndDate = tempdate.plusDays(manyDays); //Ny EndDate bliver oprettet for at kunne smides ind i objektet
-                System.out.println("The contract is now running till " + newEndDate);
                 PreparedStatement ps = con.prepareStatement("UPDATE contract SET contract_end = ? WHERE contract_id = ?");
                 ps.setInt(2, contractDecider);
-                ps.setDate(1, java.sql.Date.valueOf(newEndDate));
 
-                for(int x = 0; x < contracts.size(); x++){
-                    if(contracts.get(x).getContractId() == contractDecider){
-                        contracts.get(x).setContractEnd(newEndDate); //Objektet ændres
+                System.out.println("How many days do you want to extend the contracts with?");
+                int manyDays = in.nextInt(); // en int til at bestemme hvor mange dage der tilføjes
 
+                for(int y = 0; y < contracts.size(); y++){
+                    if(contracts.get(y).getContractId() == contractDecider){
+                        LocalDate tempdate = contracts.get(y).getContractEnd(); //Hiver den gamle EndDate ud for at der kan lægges oven i den
+                        LocalDate newEndDate = tempdate.plusDays(manyDays); //Ny EndDate bliver oprettet for at kunne smides ind i objektet
+                        contracts.get(y).setContractEnd(newEndDate); //Objektet ændres
+                        System.out.println("The contract is now running till " + newEndDate);
+                        ps.setDate(1, java.sql.Date.valueOf(newEndDate));
                     }
                 }
                 ps.executeUpdate();
             }
 
-
             con.close();
-
         }
         catch(SQLException sqlex) {
             try {
