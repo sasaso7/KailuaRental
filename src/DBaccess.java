@@ -14,7 +14,7 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-    static String password = "Skole1234%";
+    static String password = "1234";
 
     public static void getDB(){
         try {
@@ -678,12 +678,16 @@ public class DBaccess {
         for(i=0; i < contracts.size(); i++){
             System.out.println("Press #"+i+ " for " +contracts.get(i));
         }
-        String contractDecider = in.nextLine();
+        int contractDecider = in.nextInt();
         System.out.println("If you want to edit which car is in the contract press #1");
         System.out.println("If you want to edit how lang the car contract is running press #2");
         int contractIf = in.nextInt();
         try {
+            con = null;
 
+            Class.forName(JDBC_DRIVER);
+
+            con = DriverManager.getConnection(DATABASE_URL, "root", password);
             if(contractIf == 1){
                 System.out.println("Which car do you want to be in the contract?");
                 int j = 0;
@@ -692,33 +696,25 @@ public class DBaccess {
                 }
                 int carDecider = in.nextInt();
                 PreparedStatement ps = con.prepareStatement("UPDATE contracts SET car_id = ?, WHERE contract_id = ?");
-                ps.setString(2, contractDecider);
+                ps.setInt(2, contractDecider);
                 ps.setInt(1, carDecider);
                 ps.executeUpdate();
-                ps.close();
+
+                contracts.get(contractDecider).setContractCar(cars.get(carDecider));
             }else if(contractIf == 2){
                 System.out.println("How many days do you want to extend the contracts with?");
                 int manyDays = in.nextInt();
-                LocalDate tempdate = contracts.get(parseInt(contractDecider)).getContractEnd();
+                LocalDate tempdate = contracts.get(contractDecider).getContractEnd();
                 LocalDate newEndDate = tempdate.plusDays(manyDays);
                 System.out.println("The contract is now running till " + newEndDate);
                 PreparedStatement ps = con.prepareStatement("UPDATE contracts SET contract_end = ?, WHERE contract_id = ? ");
-                ps.setString(2, contractDecider);
+                ps.setInt(2, contractDecider);
                 ps.setDate(1, java.sql.Date.valueOf(newEndDate));
-                ps.close();
+
+                contracts.get(contractDecider).setContractEnd(newEndDate);
             }
 
 
-
-            con = null;
-            Statement s = null;
-            Class.forName(JDBC_DRIVER);
-
-            con = DriverManager.getConnection(DATABASE_URL, "root", password);
-            s = con.createStatement();
-
-
-            s.close();
             con.close();
 
         }
