@@ -16,39 +16,6 @@ public class DBaccess {
     static Connection con;
     static String password = "1234";
 
-    public static void getDB(){
-        try {
-            con = null;
-            Statement s = null;
-            Class.forName(JDBC_DRIVER);
-
-            con = DriverManager.getConnection(DATABASE_URL, "root", password);
-            s = con.createStatement();
-
-            ResultSet rs = s.executeQuery("SELECT renter_name,  renter_city  from renters");
-            if (rs != null)
-                while (rs.next()) {
-                    System.out.printf("Data from name: %-34s ",rs.getString("renter_name"));
-                    System.out.printf("%s\n ",rs.getString("renter_city"));
-                }
-            s.close();
-            con.close();
-
-        }
-        catch(SQLException sqlex) {
-            try {
-                System.out.println(sqlex.getMessage());
-                con.close();
-                System.exit(1);  // terminate program
-            }
-        catch(SQLException sql){}
-        }
-        catch (ClassNotFoundException noClass) {
-            System.err.println("Driver Class not found");
-            System.out.println(noClass.getMessage());
-            System.exit(1);  // terminate program
-        }
-        }
 
         //Nu bliver der lavet getRenters metoden, som skal hive alle renters ud af vores database
         public static void getRenters(ArrayList<Renters> renters){
