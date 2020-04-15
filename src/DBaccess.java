@@ -752,36 +752,40 @@ public class DBaccess {
             if(contractIf == 1){
                 System.out.println("Which car do you want to be in the contract?");
                 for(int j = 0; j < cars.size(); j++){
-                    System.out.println("Press # " + cars.get(j).getCarId() + "for " + cars.get(i).getBrand());
+                    System.out.println("Press # " + cars.get(j).getCarId() + "for " + cars.get(j).getBrand());
                 }
                 int carDecider = in.nextInt(); //Int til at bestemme hvilken bil der bliver valgt
-                PreparedStatement ps = con.prepareStatement("UPDATE contracts SET car_id = ?, WHERE contract_id = ?");
+                PreparedStatement ps = con.prepareStatement("UPDATE contract SET car_id = ? WHERE contract_id = ?");
                 //Preparedstatement bliver oprettet  og gjort klar til at smide de nye værdier ind i
                 ps.setInt(2, contractDecider);
                 ps.setInt(1, carDecider);
                 ps.executeUpdate(); //Det executes igennem executeUpdate statement
 
-                for(int x = 0; x < contracts.size(); x++){ //EMIL FORKLAR
-                    if(contracts.get(i).getContractId() == contractDecider){
+                for(int x = 0; x < contracts.size(); x++){
+                    if(contracts.get(x).getContractId() == contractDecider){
                         for(int y = 0; y < cars.size(); y++) {
                             if(cars.get(y).getCarId() == carDecider){
                                 contracts.get(x).setContractCar(cars.get(y));
                             }
                         }
                     }
-                } //PLZ
-                contracts.get(contractDecider).setContractCar(cars.get(carDecider));
+                }
             }else if(contractIf == 2){
                 System.out.println("How many days do you want to extend the contracts with?");
                 int manyDays = in.nextInt(); // en int til at bestemme hvor mange dage der tilføjes
                 LocalDate tempdate = contracts.get(contractDecider).getContractEnd(); //Hiver den gamle EndDate ud for at der kan lægges oven i den
                 LocalDate newEndDate = tempdate.plusDays(manyDays); //Ny EndDate bliver oprettet for at kunne smides ind i objektet
                 System.out.println("The contract is now running till " + newEndDate);
-                PreparedStatement ps = con.prepareStatement("UPDATE contracts SET contract_end = ?, WHERE contract_id = ? ");
+                PreparedStatement ps = con.prepareStatement("UPDATE contract SET contract_end = ? WHERE contract_id = ?");
                 ps.setInt(2, contractDecider);
                 ps.setDate(1, java.sql.Date.valueOf(newEndDate));
 
-                contracts.get(contractDecider).setContractEnd(newEndDate); //Objektet ændres
+                for(int x = 0; x < contracts.size(); x++){
+                    if(contracts.get(x).getContractId() == contractDecider){
+                        contracts.get(x).setContractEnd(newEndDate); //Objektet ændres
+
+                    }
+                }
                 ps.executeUpdate();
             }
 
