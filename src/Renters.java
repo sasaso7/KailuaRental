@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Renters {
@@ -13,10 +14,10 @@ public class Renters {
     public String city;
     public String zip;
     public String licenceNumber;
-    public Date licenceSince;
+    public LocalDate licenceSince;
 
 
-    public Renters(int renterID, String renterFirstName, String renterLastName, String phone, String mail, String address, String city, String zip, String licenceNumber, Date licenceSince) {
+    public Renters(int renterID, String renterFirstName, String renterLastName, String phone, String mail, String address, String city, String zip, String licenceNumber, LocalDate licenceSince) {
         this.renterID = renterID;
         this.renterFirstName = renterFirstName;
         this.renterLastName = renterLastName;
@@ -101,11 +102,11 @@ public class Renters {
         this.licenceNumber = licenceNumber;
     }
 
-    public Date getLicenceSince() {
+    public LocalDate getLicenceSince() {
         return licenceSince;
     }
 
-    public void setLicenceSince(Date licenceSince) {
+    public void setLicenceSince(LocalDate licenceSince) {
         this.licenceSince = licenceSince;
     }
 

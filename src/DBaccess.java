@@ -1,7 +1,9 @@
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,7 +51,9 @@ public class DBaccess {
                          String licenceNumber = rs.getString("renter_licence_number");
                          Date licenceSince = rs.getDate("renter_licence_since");
                          //nu laves objektet
-                         Renters addman = new Renters(renterID, renterFirstName, renterLastName, phone, mail, address, city, zip, licenceNumber, licenceSince);
+                        String fix = licenceSince.toString();
+                        LocalDate add = LocalDate.parse(fix);
+                         Renters addman = new Renters(renterID, renterFirstName, renterLastName, phone, mail, address, city, zip, licenceNumber, add);
                         //objektet tilføjes på vores arrayliste
                          renters.add(addman);
 
@@ -84,7 +88,7 @@ public class DBaccess {
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
             //Et query bliver gjort klar så der kan fyldes values ind i
-            String query =  "insert into renters (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_license_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query =  "insert into renters (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_licence_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
@@ -118,10 +122,10 @@ public class DBaccess {
             System.out.println("Please enter when your driver licence got registered in YYYY-MM-DD");
                     String i = in.nextLine();
                     preparedStmt.setString (9, i);
-
+                LocalDate addToAddman = LocalDate.parse(i);
             // execute the preparedstatement, dette gøres fordi alle værdierne er blevet fyldt ud
             preparedStmt.execute();
-
+            Renters addman = new Renters(RenterIDCounter, a, b, c, d, e, f, g, h, addToAddman);
             con.close();
 
         }
