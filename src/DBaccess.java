@@ -719,17 +719,13 @@ public class DBaccess {
     public static void contractEdit(ArrayList<Contract> contracts, ArrayList<Car> cars){
         Scanner in = new Scanner(System.in);
         System.out.println("Which of these contracts do you want to edit?");
-        //Laver en int, for at der kan tælles på den
         int i = 0;
         for(i=0; i < contracts.size(); i++){
-            //Der køres igennem arrayet for at bestemme hvilken kontrakt der skal vælges
-            System.out.println("Press #"+i+1+ " for " +contracts.get(i));
+            System.out.println("Press #"+i+ " for " +contracts.get(i));
         }
-        //denne int bruges til at vælge kontrakt
         int contractDecider = in.nextInt();
         System.out.println("If you want to edit which car is in the contract press #1");
         System.out.println("If you want to edit how lang the car contract is running press #2");
-        //bruges til at bestemme hvad brugeren gør i if elsen
         int contractIf = in.nextInt();
         try {
             con = null;
