@@ -10,6 +10,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.println("Please enter the password to MYSQL");
         String password = in.nextLine();
+        //Bruger setteren fra DBaccess til at redigere det.
         DBaccess.setPassword(password);
         CarMenu.Menu();
     }

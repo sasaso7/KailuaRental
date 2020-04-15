@@ -14,7 +14,7 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-
+//En setter til password så det kan ændres på baggrund af hvem der har programmet
     public static void setPassword(String password) {
         DBaccess.password = password;
     }
@@ -729,6 +729,7 @@ public class DBaccess {
             System.exit(1);  // terminate program
         }
     }
+    //En metode til at skulle ændre i contracts
     public static void contractEdit(ArrayList<Contract> contracts, ArrayList<Car> cars){
         Scanner in = new Scanner(System.in);
         System.out.println("Which of these contracts do you want to edit?");
@@ -738,7 +739,7 @@ public class DBaccess {
         }
         int contractDecider = in.nextInt();
         System.out.println("If you want to edit which car is in the contract press #1");
-        System.out.println("If you want to edit how lang the car contract is running press #2");
+        System.out.println("If you want to edit how long the car contract is running press #2");
         int contractIf = in.nextInt();
         try {
             con = null;
@@ -751,13 +752,14 @@ public class DBaccess {
                 for(int j = 0; j < cars.size(); j++){
                     System.out.println("Press # " + cars.get(j).getCarId() + "for " + cars.get(i).getBrand());
                 }
-                int carDecider = in.nextInt();
+                int carDecider = in.nextInt(); //Int til at bestemme hvilken bil der bliver valgt
                 PreparedStatement ps = con.prepareStatement("UPDATE contracts SET car_id = ?, WHERE contract_id = ?");
+                //Preparedstatement bliver oprettet  og gjort klar til at smide de nye værdier ind i
                 ps.setInt(2, contractDecider);
                 ps.setInt(1, carDecider);
-                ps.executeUpdate();
+                ps.executeUpdate(); //Det executes igennem executeUpdate statement
 
-                for(int x = 0; x < contracts.size(); x++){
+                for(int x = 0; x < contracts.size(); x++){ //EMIL FORKLAR
                     if(contracts.get(i).getContractId() == contractDecider){
                         for(int y = 0; y < cars.size(); y++) {
                             if(cars.get(y).getCarId() == carDecider){
@@ -765,19 +767,20 @@ public class DBaccess {
                             }
                         }
                     }
-                }
+                } //PLZ
                 contracts.get(contractDecider).setContractCar(cars.get(carDecider));
             }else if(contractIf == 2){
                 System.out.println("How many days do you want to extend the contracts with?");
-                int manyDays = in.nextInt();
-                LocalDate tempdate = contracts.get(contractDecider).getContractEnd();
-                LocalDate newEndDate = tempdate.plusDays(manyDays);
+                int manyDays = in.nextInt(); // en int til at bestemme hvor mange dage der tilføjes
+                LocalDate tempdate = contracts.get(contractDecider).getContractEnd(); //Hiver den gamle EndDate ud for at der kan lægges oven i den
+                LocalDate newEndDate = tempdate.plusDays(manyDays); //Ny EndDate bliver oprettet for at kunne smides ind i objektet
                 System.out.println("The contract is now running till " + newEndDate);
                 PreparedStatement ps = con.prepareStatement("UPDATE contracts SET contract_end = ?, WHERE contract_id = ? ");
                 ps.setInt(2, contractDecider);
                 ps.setDate(1, java.sql.Date.valueOf(newEndDate));
 
-                contracts.get(contractDecider).setContractEnd(newEndDate);
+                contracts.get(contractDecider).setContractEnd(newEndDate); //Objektet ændres
+                ps.executeUpdate();
             }
 
 
