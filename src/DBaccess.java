@@ -93,8 +93,7 @@ public class DBaccess {
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
             //Her bestemmes renterID ved at tage arraylisten +1 da MYSQL starter fra 1 og ikke 0 som er standard i java
-            int RenterIDCounter = renters.size();
-                    int renterID = RenterIDCounter+1;
+                    int renterID = renters.size()+1;
             System.out.println("Please enter your first name");
                     String a = in.nextLine();
                     preparedStmt.setString (1, a);
@@ -125,7 +124,8 @@ public class DBaccess {
                 LocalDate addToAddman = LocalDate.parse(i);
             // execute the preparedstatement, dette gøres fordi alle værdierne er blevet fyldt ud
             preparedStmt.execute();
-            Renters addman = new Renters(RenterIDCounter, a, b, c, d, e, f, g, h, addToAddman);
+            Renters addman = new Renters(renterID, a, b, c, d, e, f, g, h, addToAddman);
+            renters.add(addman);
             con.close();
 
         }
@@ -403,7 +403,7 @@ public class DBaccess {
                     }
                 }
             }
-            System.out.printf("Press 1 to view luxury cars%n Press 2 to view sport cars%n Press 3 to view family cars%n");
+            System.out.printf("Press 1 to view luxury cars %nPress 2 to view sport cars %nPress 3 to view family cars%n");
             int inputCar = console.nextInt();
             String carType = "";
             if (inputCar == 1) {
@@ -681,7 +681,7 @@ public class DBaccess {
             Calendar calendar = Calendar.getInstance();
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
-            System.out.printf("Press 1 to view luxury cars%n Press 2 to view sport cars%n Press 3 to view family cars%n");
+            System.out.printf("Press 1 to view luxury cars %nPress 2 to view sport cars %nPress 3 to view family cars%n");
             int inputCar = console.nextInt();
             String carType = "";
             if (inputCar == 1) {
