@@ -14,17 +14,23 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-    static String password = "Skole1234%";
 
+    public static void setPassword(String password) {
+        DBaccess.password = password;
+    }
 
+    //en static string for at undgå at skulle ændre password i hver metode
+    private static String password;
+
+        //VIS DENNE METODE
         //Nu bliver der lavet getRenters metoden, som skal hive alle renters ud af vores database
         public static void getRenters(ArrayList<Renters> renters){
             try {
                 con = null;
                 Statement s = null;
+                con = DriverManager.getConnection(DATABASE_URL, "root", password);
                 Class.forName(JDBC_DRIVER);
 
-                con = DriverManager.getConnection(DATABASE_URL, "root", password);
                 s = con.createStatement();
 
                 ResultSet rs = s.executeQuery("SELECT renter_id, renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_licence_since  FROM renters");
@@ -66,6 +72,7 @@ public class DBaccess {
                 System.exit(1);  // terminate program
             }
         }
+        //VIS DENNE METODE
     public static void insertRenters(ArrayList<Renters> renters){
         Scanner in = new Scanner(System.in);
         try {
@@ -76,12 +83,12 @@ public class DBaccess {
             Calendar calendar = Calendar.getInstance();
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
-
+            //Et query bliver gjort klar så der kan fyldes values ind i
             String query =  "insert into renters (renter_first_name, renter_last_name, renter_phone, renter_mail, renter_adress, renter_city, renter_zip, renter_licence_number, renter_license_since)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStmt = con.prepareStatement(query);
 
-            //Her bestemmes renterID
+            //Her bestemmes renterID ved at tage arraylisten +1 da MYSQL starter fra 1 og ikke 0 som er standard i java
             int RenterIDCounter = renters.size();
                     int renterID = RenterIDCounter+1;
             System.out.println("Please enter your first name");
@@ -112,7 +119,7 @@ public class DBaccess {
                     String i = in.nextLine();
                     preparedStmt.setString (9, i);
 
-            // execute the preparedstatement
+            // execute the preparedstatement, dette gøres fordi alle værdierne er blevet fyldt ud
             preparedStmt.execute();
 
             con.close();
