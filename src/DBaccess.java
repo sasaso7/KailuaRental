@@ -16,10 +16,9 @@ public class DBaccess {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/cars";
     static Connection con;
-//En setter til password så det kan ændres på baggrund af hvem der har programmet
-    public static void setPassword(String password) {
-        DBaccess.password = password;
-    }
+
+    //En setter til password så det kan ændres på baggrund af hvem der har programmet
+    public static void setPassword(String password) { DBaccess.password = password; }
 
     //en static string for at undgå at skulle ændre password i hver metode
     private static String password;
@@ -873,6 +872,17 @@ public class DBaccess {
             System.err.println("Driver Class not found");
             System.out.println(noClass.getMessage());
             System.exit(1);  // terminate program
+        }
+    }
+    public static void greet(String password){
+        if (DBaccess.password.equals("Razzerthejazzer21")) {
+            System.out.println("Welcome Rasmus Degn");
+        } else if (DBaccess.password.equals("ElfenbenNisse19")) {
+            System.out.println("Welcome Emil Witt");
+        } else if (DBaccess.password.equals("1234")) {
+            System.out.println("Welcome Phillip Meisner");
+        } else if (DBaccess.password.equals("Skole1234%")) {
+            System.out.println("Welcome Emil Ghidotti");
         }
     }
 }

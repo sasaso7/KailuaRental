@@ -25,11 +25,12 @@ public class CarMenu {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("\t" + formattedDate);
+        System.out.println("Local Time is: " + formattedDate);
+        System.out.println("Enjoy these lovely corona days");
 
         do {
             System.out.println("__________________________________");
-            System.out.println("|\t     - Kailua Car Rental -    |");
+            System.out.println("|\t   - Kailua Car Rental -      |");
             System.out.println("|Press 1# for Cars                |");
             System.out.println("|Press 2# for Renters             |");
             System.out.println("|Press 3# for Contract            |");
