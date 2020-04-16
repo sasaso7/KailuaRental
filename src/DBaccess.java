@@ -875,6 +875,7 @@ public class DBaccess {
         }
     }
     public static void greet(String password){
+        System.out.println();
         if (DBaccess.password.equals("Razzerthejazzer21")) {
             System.out.println("Welcome Rasmus Degn");
         } else if (DBaccess.password.equals("ElfenbenNisse19")) {

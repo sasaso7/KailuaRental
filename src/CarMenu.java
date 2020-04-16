@@ -25,8 +25,10 @@ public class CarMenu {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("Local Time is: " + formattedDate);
-        System.out.println("Enjoy these lovely corona days");
+        System.out.println();
+        System.out.println("Local Date/Time is: " + formattedDate);
+        System.out.println();
+        System.out.println("Enjoy these lovely corona times");
 
         do {
             System.out.println("__________________________________");
