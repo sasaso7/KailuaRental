@@ -605,7 +605,13 @@ public class DBaccess {
             }
 
             int a = in.nextInt();
-            contracts.remove(a-1);
+
+            for(int i = 0; i < contracts.size(); i++){
+                if(contracts.get(i).getContractId() == a){
+                    contracts.remove(i);
+                }
+            }
+
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
 
