@@ -648,16 +648,22 @@ public class DBaccess {
             PreparedStatement PreparedStm = con.prepareStatement(query);
 
             System.out.println("Which renter do you wish to delete from the database? \nChoose from renter ID number");
-            for(Renters a: renters){
-                System.out.println(a);
+            for(int i=0; i < renters.size(); i++){
+                System.out.println("Renter ID #"+ renters.get(i).getRenterID() + " for " +renters.get(i));
             }
 
             int a = in.nextInt();
             PreparedStm.setInt(1, a);
             PreparedStm.executeUpdate();
-            renters.remove(a-1);
-            System.out.println("Record deleted succesfully!");
 
+            for(int j = 0; j < renters.size(); j++){
+                if(renters.get(j).getRenterID() == a){
+                    renters.remove(j);
+
+                }
+            }
+
+            System.out.println("Record deleted succesfully!");
             s.close();
             con.close();
         }
@@ -814,7 +820,7 @@ public class DBaccess {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the ID of the renter you want to edit");
         for(int i=0; i < renters.size(); i++){
-            System.out.println("Press #"+ renters.get(i).getRenterID() + " for " +renters.get(i));
+            System.out.println("Renter ID #"+ renters.get(i).getRenterID() + " for " +renters.get(i));
         }
         int inputRenterId = in.nextInt();
         System.out.println("You have selected:");
